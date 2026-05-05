@@ -27,27 +27,36 @@ export const Hero = () => {
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-6">
-            <div className="flex -space-x-3">
-              {[
-                "https://i.pravatar.cc/80?img=12",
-                "https://i.pravatar.cc/80?img=32",
-                "https://i.pravatar.cc/80?img=47",
-                "https://i.pravatar.cc/80?img=68",
-              ].map((src) => (
-                <img key={src} src={src} className="h-10 w-10 rounded-full border-2 border-background object-cover" alt="" />
-              ))}
-            </div>
-            <div>
-              <div className="flex items-center gap-1 text-yellow-300">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-                <span className="text-white text-sm font-semibold ml-1">4.8</span>
-              </div>
-              <p className="text-xs text-white/70">Trusted by 50,000+ users across India</p>
-            </div>
-          </div>
+         <div className="mt-10 flex items-center gap-6">
+  <div className="flex -space-x-3">
+    {[
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
+      "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
+      "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg",
+    ].map((src, index) => (
+      <img
+        key={index}
+        src={src}
+        alt={`Indian user ${index + 1}`}
+        className="h-10 w-10 rounded-full border-2 border-background object-cover"
+      />
+    ))}
+  </div>
+
+  <div>
+    <div className="flex items-center gap-1 text-yellow-300">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className="h-4 w-4 fill-current" />
+      ))}
+      <span className="ml-1 text-sm font-semibold text-white">4.8</span>
+    </div>
+
+    <p className="text-xs text-white/70">
+      Trusted by 50,000+ users across India
+    </p>
+  </div>
+</div>
         </div>
 
         <div className="relative flex justify-center lg:justify-end animate-fade-up [animation-delay:200ms]">

@@ -45,6 +45,41 @@ const RefundPolicy = () => {
       <h3>No Refund for Subjective Dissatisfaction</h3>
       <p>No refunds for reasons such as: you did not like the advice, you disagreed with the opinion given, or you expected guaranteed results.</p>
 
+      <h2>Refund Policy for Live Sessions & Webinars</h2>
+      <p>
+        Refunds for Live Sessions and Webinars are subject to the following conditions:
+      </p>
+
+      <h3>Non-Refundable Scenarios</h3>
+      <p>
+        Entry fees for Live Sessions are generally non-refundable once the session has started.
+        No refund will be issued if the user joins late, leaves early, or is unable to attend due to personal reasons.
+        Failure to get a chance to ask a question in a group session does not qualify for a refund.
+      </p>
+
+      <h3>Eligible Refund Scenarios</h3>
+      <p>
+        If a Live Session is canceled by the platform or the consultant before it begins → Full refund to the user’s wallet.
+        If a technical issue from the platform side prevents access to the session → Full or partial refund (after review).
+        If the consultant fails to start or significantly delays the session → Full or partial refund, based on the situation.
+      </p>
+
+      <h3>Co-host / Question Slot Refunds</h3>
+      <p>
+        If a user pays for a co-host or question opportunity and:
+        The session ends before their turn → Eligible for partial or full refund.
+        The consultant does not respond to the question → Eligible for review-based refund.
+      </p>
+
+      <h3>Processing of Refunds</h3>
+      <p>
+        All approved refunds will be credited to the Easy Advising wallet within 72 hours.
+        Refunds may be adjusted for payment gateway charges where applicable.
+      </p>
+      <p>
+        Easy Advising offers interactive features including live audio rooms, video webinars, and group sessions hosted by consultants (“Live Sessions”). These are designed for real-time learning, discussion, and general advisory purposes.
+      </p>
+
       <h3>Refund Timeline</h3>
       <p>All approved refunds will be processed to your Easy Advising wallet within 72 hours.</p>
     </PolicyLayout>

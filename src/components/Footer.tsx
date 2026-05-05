@@ -27,7 +27,7 @@ export const Footer = () => {
             <span className="font-bold text-xl">Easy Advising</span>
           </div>
           <p className="mt-4 text-sm text-background/70 max-w-xs">
-            Verified experts, instant calls, fair per-minute pricing. India's on-demand advice platform.
+            Easy Advising is a platform where experts and creators host live webinars, run interactive sessions, and connect 1-on-1 with you.
           </p>
           <div className="mt-5 flex gap-3">
             {socialLinks.map(({ Icon, url }, i) => (
@@ -100,8 +100,8 @@ export const Footer = () => {
 
       <div className="container mt-12 pt-6 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-background/60">
         <p>© {new Date().getFullYear()} Easy Advising. All rights reserved.</p>
-        <a href="mailto:hello@easyadvising.in" className="inline-flex items-center gap-2 hover:text-background transition-smooth">
-          <Mail className="h-3.5 w-3.5" /> hello@easyadvising.in
+        <a href="mailto:contact@easyadvising.com" className="inline-flex items-center gap-2 hover:text-background transition-smooth">
+          <Mail className="h-3.5 w-3.5" /> contact@easyadvising.com
         </a>
       </div>
     </footer>

@@ -16,6 +16,9 @@ const Terms = () => {
       <p>Before proceeding, please understand the following:</p>
       <ul>
         <li>
+          Live Sessions may be recorded for quality, training, or promotional purposes. By joining a Live Session, you consent to being recorded (audio/video/text) and allow Easy Advising to use such content in accordance with its policies. Users should avoid sharing any sensitive or personal information during live participation.
+        </li>
+        <li>
           All consultations are advisory in nature and represent non-binding opinions based solely
           on the information you, the user, choose to provide.
         </li>
@@ -175,7 +178,73 @@ const Terms = () => {
         <li>Not for real-time trading or investment actions.</li>
       </ul>
 
-      <h2>14. Governing Law and Jurisdiction</h2>
+
+      <h2>14. Live Sessions, Audio Rooms & Webinars</h2>
+      <p>
+        Easy Advising offers interactive features including live audio rooms, video webinars, and group sessions hosted by consultants (“Live Sessions”). These are designed for real-time learning, discussion, and general advisory purposes.
+      </p>
+
+      <h3>Nature of Live Sessions</h3>
+      <p>
+        Live Sessions may include multiple participants and are not one-on-one consultations unless explicitly stated.
+        These sessions are informational and general in nature and may not address individual-specific concerns.
+        Participation does not guarantee the opportunity to ask a question or interact directly with the consultant unless a co-host or question slot is explicitly provided.
+      </p>
+
+      <h3>Access & Participation</h3>
+      <p>
+        Entry to Live Sessions may require payment of a fixed entry fee, which is clearly displayed before joining.
+        Certain sessions may have limited co-host or speaker slots. Access to these may be on a first-come, first-served or paid basis.
+        Users are expected to maintain respectful and appropriate behavior during all live interactions.
+      </p>
+
+      <h3>Recording & Usage</h3>
+      <p>
+        Live Sessions may be recorded for quality, training, or promotional purposes.
+        By joining a Live Session, you consent to being recorded (audio/video/text) and allow Easy Advising to use such content in accordance with its policies.
+        Users should avoid sharing any sensitive or personal information during live participation.
+      </p>
+      <p>
+        These terms are governed by the laws of the Republic of India. All disputes shall be
+        resolved exclusively by the courts located in Delhi.
+      </p>
+
+      <h2>15. Refund Policy for Live Sessions & Webinars</h2>
+      <p>
+        Refunds for Live Sessions and Webinars are subject to the following conditions:
+      </p>
+
+      <h3>Non-Refundable Scenarios</h3>
+      <p>
+        Entry fees for Live Sessions are generally non-refundable once the session has started.
+        No refund will be issued if the user joins late, leaves early, or is unable to attend due to personal reasons.
+        Failure to get a chance to ask a question in a group session does not qualify for a refund.
+      </p>
+
+      <h3>Eligible Refund Scenarios</h3>
+      <p>
+        If a Live Session is canceled by the platform or the consultant before it begins → Full refund to the user’s wallet.
+        If a technical issue from the platform side prevents access to the session → Full or partial refund (after review).
+        If the consultant fails to start or significantly delays the session → Full or partial refund, based on the situation.
+      </p>
+
+      <h3>Co-host / Question Slot Refunds</h3>
+      <p>
+        If a user pays for a co-host or question opportunity and:
+        The session ends before their turn → Eligible for partial or full refund.
+        The consultant does not respond to the question → Eligible for review-based refund.
+      </p>
+
+      <h3>Processing of Refunds</h3>
+      <p>
+        All approved refunds will be credited to the Easy Advising wallet within 72 hours.
+        Refunds may be adjusted for payment gateway charges where applicable.
+      </p>
+      <p>
+        Easy Advising offers interactive features including live audio rooms, video webinars, and group sessions hosted by consultants (“Live Sessions”). These are designed for real-time learning, discussion, and general advisory purposes.
+      </p>
+
+      <h2>16. Governing Law and Jurisdiction</h2>
       <p>
         These terms are governed by the laws of the Republic of India. All disputes shall be
         resolved exclusively by the courts located in Delhi.

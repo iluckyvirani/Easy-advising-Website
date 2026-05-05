@@ -1,7 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Briefcase, IndianRupee, Clock, Award, CheckCircle2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { ADVISOR_PLAY_STORE_URL } from "@/lib/constants";
+import emailjs from "@emailjs/browser";
+import axios from "axios";
+import { ADVISOR_PLAY_STORE_URL, BASE_URL } from "@/lib/constants";
+
+// Initialize EmailJS
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+interface Category {
+  id: number;
+  name: string;
+  icon: string;
+  desc: string;
+  isActive: boolean;
+}
 
 const perks = [
   { icon: IndianRupee, title: "Set your own pricing", text: "You decide your entry fee and per-question fee — keep what works for your expertise." },
@@ -10,21 +23,70 @@ const perks = [
   { icon: Briefcase, title: "Weekly payouts", text: "Direct bank transfer every Friday. Zero chasing." },
 ];
 
-const categories = [
-  "Doctor", "Engineer", "Lawyer", "CA / Finance",
-  "Business Coach", "Career Mentor", "Wellness", "Designer",
-  "Tech / IT", "Education", "Agriculture", "Other",
-];
-
 export const BecomeAdvisor = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    axios
+      .get<Category[]>(`${BASE_URL}/api/categories/active`)
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.error("Failed to fetch categories:", err))
+      .finally(() => setLoadingCategories(false));
+  }, []);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast.success("Application received! We'll reach out within 24 hours.");
-    (e.target as HTMLFormElement).reset();
-    setTimeout(() => setSubmitted(false), 4000);
+    setIsLoading(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      
+      const templateParams = {
+        to_email: import.meta.env.VITE_EMAILJS_TO_EMAIL,
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        category: formData.get("category"),
+        experience: formData.get("experience"),
+        city: formData.get("city"),
+        about: formData.get("bio"),
+      };
+
+      const apiPayload = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        category: formData.get("category"),
+        experience: Number(formData.get("experience")),
+        city: formData.get("city"),
+        bio: formData.get("bio"),
+      };
+
+      // Send both EmailJS and API request in parallel
+      const [emailResult, apiResult] = await Promise.all([
+        emailjs.send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          templateParams
+        ),
+        axios.post(`${BASE_URL}/api/advisor-leads`, apiPayload),
+      ]);
+
+      if (emailResult.status === 200 && apiResult.status === 201) {
+        setSubmitted(true);
+        toast.success("Application received! We'll reach out within 24 hours.");
+        (e.target as HTMLFormElement).reset();
+        setTimeout(() => setSubmitted(false), 4000);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Failed to submit application. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -41,7 +103,7 @@ export const BecomeAdvisor = () => {
               <span className="text-brand-gradient">Get paid for every question.</span>
             </h2>
             <p className="mt-5 text-muted-foreground text-lg">
-              Join 1,200+ verified advisors helping people across India. Start in days, not months.
+              Join 200+ verified advisors helping people across India. Start in days, not months.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -87,10 +149,12 @@ export const BecomeAdvisor = () => {
                   <select
                     name="category"
                     required
-                    className="px-4 py-3 rounded-xl bg-background border border-border focus:outline-none focus:ring-2 focus:ring-brand-red/40 focus:border-brand-red transition-smooth"
+                    disabled={loadingCategories}
+                    className="px-4 py-3 rounded-xl bg-background border border-border focus:outline-none focus:ring-2 focus:ring-brand-red/40 focus:border-brand-red transition-smooth disabled:opacity-50"
                   >
+                    <option value="">{loadingCategories ? "Loading categories..." : "Select a category"}</option>
                     {categories.map((c) => (
-                      <option key={c}>{c}</option>
+                      <option key={c.id} value={c.name}>{c.name}</option>
                     ))}
                   </select>
                 </div>
@@ -111,12 +175,17 @@ export const BecomeAdvisor = () => {
                 <div className="sm:col-span-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-2">
                   <button
                     type="submit"
-                    disabled={submitted}
+                    disabled={submitted || isLoading}
                     className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-gradient text-white font-semibold shadow-soft hover:shadow-glow hover:scale-[1.02] transition-smooth disabled:opacity-70"
                   >
                     {submitted ? (
                       <>
                         <CheckCircle2 className="h-5 w-5" /> Application sent
+                      </>
+                    ) : isLoading ? (
+                      <>
+                        <div className="h-5 w-5 animate-spin border-2 border-white border-t-transparent rounded-full" />
+                        Sending...
                       </>
                     ) : (
                       <>

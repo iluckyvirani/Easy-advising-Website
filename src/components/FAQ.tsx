@@ -8,10 +8,10 @@ import { HelpCircle, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { SUPPORT_EMAIL, WHATSAPP_URL } from "@/lib/constants";
 
 const faqs = [
-  {
-    q: "How does pricing work on Easy Advising?",
-    a: "Each session has two simple components: a one-time entry fee to start the session with the advisor, and a flat per-question fee for every question you ask. Both amounts are set by the advisor and shown clearly on their profile before you connect — no per-minute timers, no surprise totals.",
-  },
+  // {
+  //   q: "How does pricing work on Easy Advising?",
+  //   a: "Each session has two simple components: a one-time entry fee to start the session with the advisor, and a flat per-question fee for every question you ask. Both amounts are set by the advisor and shown clearly on their profile before you connect — no per-minute timers, no surprise totals.",
+  // },
   {
     q: "What types of sessions can I have?",
     a: "Three formats: Audio calls (voice-only, fastest to start), Video calls (HD in-app, secure for face-to-face advice), and Live Webinars (one-to-many sessions, sometimes free). You can also schedule a session for later instead of going instant.",
@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "What is your refund policy?",
-    a: "If a call drops due to a technical issue before you get value, the entry fee and any unused question fees are auto-refunded to your wallet within 24 hours. Unsatisfied with a session? Raise a dispute within 48 hours from the call history screen and our support team reviews every case fairly.",
+    a: "If a call drops due to a technical issue before you get value, the entry fee and any unused question fees are auto-refunded to your wallet within 72 hours. Unsatisfied with a session? Raise a dispute within 72 hours from the call history screen and our support team reviews every case fairly.",
   },
   {
     q: "How do I get started?",
@@ -32,10 +32,10 @@ const faqs = [
     q: "Are the advisors really verified?",
     a: "Yes. Every advisor goes through identity verification (Aadhaar/PAN), credential checks (degrees, licenses, certifications), and a skill screening before being listed. You'll see a green verified badge on their profile.",
   },
-  {
-    q: "Is my conversation private and secure?",
-    a: "All calls are end-to-end encrypted and never recorded by Easy Advising. Your phone number is never shared with the advisor — calls route through our secure infrastructure.",
-  },
+  // {
+  //   q: "Is my conversation private and secure?",
+  //   a: "All calls are end-to-end encrypted and never recorded by Easy Advising. Your phone number is never shared with the advisor — calls route through our secure infrastructure.",
+  // },
   {
     q: "Can I become an advisor on the platform?",
     a: "Absolutely. Tap 'Become an Advisor' in the footer or from the app menu. Submit your credentials, complete the verification process, set your entry fee and per-question fee, and start earning. Payouts happen weekly to your bank account.",

@@ -79,6 +79,18 @@ const PrivacyPolicy = () => {
         <li><strong>Object:</strong> Object to the processing of your personal information in certain circumstances.</li>
         <li><strong>Withdraw Consent:</strong> Withdraw your consent to the processing of your personal information at any time.</li>
       </ul>
+
+      <h2>Live Sessions & Recording Data</h2>
+      <p>
+        Easy Advising offers live audio rooms, video sessions, and webinars.
+      </p>
+      <p>
+        These sessions may be recorded for quality, training, dispute resolution, and promotional purposes.
+        By joining any live session, you consent to the recording of your voice, video, and interactions.
+        Your username, questions, and participation may be visible to other participants.
+        Users are strongly advised not to share sensitive personal or financial information during live sessions.
+      </p>
+
     </PolicyLayout>
   );
 };

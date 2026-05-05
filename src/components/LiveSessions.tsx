@@ -1,82 +1,34 @@
+import { useEffect, useState } from "react";
 import { Video, Mic, Calendar, Users, Radio } from "lucide-react";
-import { PLAY_STORE_URL } from "@/lib/constants";
+import axios from "axios";
+import { PLAY_STORE_URL, BASE_URL } from "@/lib/constants";
 
-const sessions = [
-  {
-    type: "video",
-    live: true,
-    title: "Mental Wellness in High-Pressure Careers",
-    host: "Dr. Anjali Mehta",
-    role: "Clinical Psychologist · 12y exp",
-    avatar: "https://i.pravatar.cc/120?img=47",
-    time: "Live now",
-    viewers: "1.2K watching",
-    seat: "₹99 / seat",
-    perQ: "₹15 / Q",
-  },
-  {
-    type: "video",
-    live: false,
-    title: "From Idea to ₹1 Cr Revenue: Founder Q&A",
-    host: "Rahul Kapoor",
-    role: "Serial Entrepreneur · YC '21",
-    avatar: "https://i.pravatar.cc/120?img=12",
-    time: "Tomorrow · 7:00 PM",
-    viewers: "846 registered",
-    seat: "₹99 / seat",
-    perQ: "₹15 / Q",
-  },
-  {
-    type: "audio",
-    live: true,
-    title: "Tax Saving Strategies for FY 2025",
-    host: "CA Priya Sharma",
-    role: "Chartered Accountant · 9y exp",
-    avatar: "https://i.pravatar.cc/120?img=45",
-    time: "Live now",
-    viewers: "523 listening",
-    seat: "₹99 / seat",
-    perQ: "₹15 / Q",
-  },
-  {
-    type: "audio",
-    live: false,
-    title: "Crack GATE 2026: Daily Doubt Clearing",
-    host: "Prof. Arjun Iyer",
-    role: "IIT Bombay Alum · Mentor",
-    avatar: "https://i.pravatar.cc/120?img=33",
-    time: "Daily · 9:00 PM",
-    viewers: "2.1K registered",
-    seat: "₹99 / seat",
-    perQ: "₹15 / Q",
-  },
-  {
-    type: "video",
-    live: true,
-    title: "Skincare Myths Busted",
-    host: "Dr. Neha Bansal",
-    role: "Dermatologist · 7y exp",
-    avatar: "https://i.pravatar.cc/120?img=24",
-    time: "Live now",
-    viewers: "987 watching",
-    seat: "₹99 / seat",
-    perQ: "₹15 / Q",
-  },
-  {
-    type: "audio",
-    live: false,
-    title: "Real Estate Buying Mistakes to Avoid",
-    host: "Adv. Vikram Singh",
-    role: "Property Lawyer · 15y exp",
-    avatar: "https://i.pravatar.cc/120?img=68",
-    time: "Sat · 11:00 AM",
-    viewers: "412 registered",
-    seat: "₹99 / seat",
-    perQ: "₹15 / Q",
-  },
-];
+interface LiveSession {
+  id: number;
+  type: "video" | "audio";
+  live: boolean;
+  title: string;
+  host: string;
+  role: string;
+  avatar: string;
+  time: string;
+  viewers: string;
+  seat: string;
+  perQ: string;
+  isActive: boolean;
+}
 
 export const LiveSessions = () => {
+  const [sessions, setSessions] = useState<LiveSession[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get<LiveSession[]>(`${BASE_URL}/api/live-sessions/active`)
+      .then((res) => setSessions(res.data))
+      .catch((err) => console.error("Failed to fetch live sessions:", err))
+      .finally(() => setLoading(false));
+  }, []);
   return (
     <section id="sessions" className="py-20 lg:py-28">
       <div className="container">
@@ -97,7 +49,20 @@ export const LiveSessions = () => {
         {/* Mobile: horizontal swipe slider */}
         <div className="sm:hidden -mx-4 px-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
           <div className="flex gap-4 pb-2">
-            {sessions.map((s, i) => (
+            {loading
+              ? Array.from({ length: 4 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="relative flex flex-col rounded-3xl overflow-hidden bg-card border border-border shadow-card animate-pulse w-[85%] shrink-0 snap-center"
+                  >
+                    <div className="h-44 bg-accent" />
+                    <div className="p-5 pt-6 space-y-3">
+                      <div className="h-6 bg-accent rounded" />
+                      <div className="h-4 bg-accent rounded w-3/4" />
+                    </div>
+                  </div>
+                ))
+              : sessions.map((s, i) => (
               <a
                 key={i}
                 href={PLAY_STORE_URL}
@@ -145,7 +110,20 @@ export const LiveSessions = () => {
 
         {/* Desktop / tablet: grid */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sessions.map((s, i) => (
+          {loading
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="relative flex flex-col rounded-3xl overflow-hidden bg-card border border-border shadow-card animate-pulse"
+                >
+                  <div className="h-44 bg-accent" />
+                  <div className="p-5 pt-6 space-y-3">
+                    <div className="h-6 bg-accent rounded" />
+                    <div className="h-4 bg-accent rounded w-3/4" />
+                  </div>
+                </div>
+              ))
+            : sessions.map((s, i) => (
             <a
               key={i}
               href={PLAY_STORE_URL}

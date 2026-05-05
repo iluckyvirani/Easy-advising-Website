@@ -1,10 +1,13 @@
 import { Star, Quote } from "lucide-react";
 
+import img from '../assets/user.png';
+
+
 const testimonials = [
   {
     name: "Riya Sharma",
     role: "MBBS Student, Delhi",
-    avatar: "https://i.pravatar.cc/120?img=49",
+    avatar: img,
     rating: 5,
     quote:
       "Got instant doubt clarification from a senior doctor at 11 PM before my exam. Paid just the entry fee plus ₹20 for two questions. Game changer!",
@@ -12,7 +15,7 @@ const testimonials = [
   {
     name: "Dr. Aman Verma",
     role: "Cardiologist · Advisor",
-    avatar: "https://i.pravatar.cc/120?img=12",
+    avatar: img,
     rating: 5,
     quote:
       "Easy Advising lets me consult patients in my free time without a clinic overhead. Earned ₹40K in my first month part-time.",
@@ -20,7 +23,7 @@ const testimonials = [
   {
     name: "Sneha Patil",
     role: "Startup Founder, Pune",
-    avatar: "https://i.pravatar.cc/120?img=44",
+    avatar: img,
     rating: 5,
     quote:
       "Spoke to a CA and a corporate lawyer back-to-back before my funding round. Saved me weeks of email back-and-forth.",
@@ -28,7 +31,7 @@ const testimonials = [
   {
     name: "Arjun Iyer",
     role: "GATE Aspirant, Chennai",
-    avatar: "https://i.pravatar.cc/120?img=33",
+    avatar: img,
     rating: 5,
     quote:
       "The IIT mentor I called broke down a tough topology problem in 12 minutes. Better than 3 hours of YouTube.",
@@ -36,7 +39,7 @@ const testimonials = [
   {
     name: "CA Priya Sharma",
     role: "Tax Advisor · Expert",
-    avatar: "https://i.pravatar.cc/120?img=45",
+    avatar: img,
     rating: 5,
     quote:
       "Verification was smooth, payouts hit my account every Friday. Best part — I set my own rates and hours.",
@@ -44,7 +47,7 @@ const testimonials = [
   {
     name: "Karan Mehta",
     role: "Engineering Student, Mumbai",
-    avatar: "https://i.pravatar.cc/120?img=68",
+    avatar: img,
     rating: 5,
     quote:
       "Live webinars are gold. Joined a free founder Q&A and ended up booking a 1:1 the same evening.",
@@ -52,7 +55,7 @@ const testimonials = [
   {
     name: "Anjali Rao",
     role: "Working Professional, Bangalore",
-    avatar: "https://i.pravatar.cc/120?img=47",
+    avatar: img,
     rating: 5,
     quote:
       "The dietitian I consulted built me a full plan over a video call. The flat per-question pricing felt super fair.",
@@ -60,7 +63,7 @@ const testimonials = [
   {
     name: "Adv. Vikram Singh",
     role: "Property Lawyer · Expert",
-    avatar: "https://i.pravatar.cc/120?img=15",
+    avatar: img,
     rating: 5,
     quote:
       "Verified clients, secure calls, no chasing payments. This is what consulting should feel like in 2025.",

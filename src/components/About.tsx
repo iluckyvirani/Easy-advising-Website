@@ -15,9 +15,9 @@ export const About = () => {
 
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {[
-            { icon: Target, title: "Our Mission", text: "Make professional advice instantly accessible to every Indian, regardless of city or schedule." },
-            { icon: Users, title: "Verified Network", text: "Every advisor is identity-verified and skill-screened before joining the platform." },
-            { icon: Sparkles, title: "Fair Billing", text: "Small entry fee + flat per-question fee. No subscriptions, no surprise charges, ever." },
+            { icon: Target, title: "Our Mission", text: "Make real conversations instantly accessible by bringing experts and creators live, so anyone can ask, connect, and get clarity anytime." },
+            { icon: Users, title: "Verified Network", text: "Every expert and creator is carefully verified for identity and experience so you can trust who you're talking to, live." },
+            { icon: Sparkles, title: "Easy to Connect", text: "Connect with experts and creators across any field-join live sessions, ask your questions, or\ntalk 1-on-1 anytime." },
           ].map(({ icon: Icon, title, text }) => (
             <div key={title} className="group relative p-8 rounded-3xl bg-card border border-border shadow-card hover:shadow-glow hover:-translate-y-1 transition-smooth">
               <div className="h-14 w-14 rounded-2xl bg-brand-gradient flex items-center justify-center text-white mb-5">
@@ -32,7 +32,7 @@ export const About = () => {
         <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             ["50K+", "Active Users"],
-            ["1,200+", "Verified Experts"],
+            ["200+", "Verified Experts"],
             ["12", "Categories"],
             ["4.8★", "App Rating"],
           ].map(([n, l]) => (
