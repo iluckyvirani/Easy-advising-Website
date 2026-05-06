@@ -1,4 +1,5 @@
 import { Star, ShieldCheck } from "lucide-react";
+import heroPhone from "@/assets/screen-experts.png";
 
 export const Hero = () => {
   return (
