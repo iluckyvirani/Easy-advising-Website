@@ -3,6 +3,9 @@ export const BASE_URL = "https://easy-backend-pi.vercel.app";
 export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.easyadvising.app&pcampaignid=web_share";
 
+export const APP_STORE_URL =
+  "https://apps.apple.com/in/app/easy-advising-consultant/id6756213524";
+
 export const ADVISOR_PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.easyadvising.consultant&pcampaignid=web_share";
 

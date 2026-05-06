@@ -1,5 +1,5 @@
 import { Star, ShieldCheck } from "lucide-react";
-import { PlayStoreButton } from "./PlayStoreButton";
+import { PlayStoreButton, AppStoreButton } from "./PlayStoreButton";
 import heroPhone from "@/assets/screen-experts.png";
 
 export const Hero = () => {
@@ -22,6 +22,7 @@ export const Hero = () => {
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <PlayStoreButton variant="light" />
+            <AppStoreButton variant="light" />
             <a href="#sessions" className="inline-flex items-center px-5 py-3 rounded-2xl border border-white/30 hover:bg-white/10 transition-smooth font-medium">
               Browse live sessions
             </a>
