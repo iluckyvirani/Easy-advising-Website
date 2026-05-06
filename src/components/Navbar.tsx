@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.webp";
+import { PlayStoreButton } from "./PlayStoreButton";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -82,6 +83,10 @@ export const Navbar = () => {
           ))}
         </ul>
 
+        <div className="hidden lg:flex items-center gap-2">
+          <PlayStoreButton className="!py-2 !px-4" />
+        </div>
+
         <button
           className={cn(
             "lg:hidden p-2 rounded-lg transition-smooth",
@@ -113,7 +118,9 @@ export const Navbar = () => {
                 </a>
               </li>
             ))}
-
+            <li className="pt-3 flex flex-wrap gap-3">
+              <PlayStoreButton />
+            </li>
           </ul>
         </div>
       )}

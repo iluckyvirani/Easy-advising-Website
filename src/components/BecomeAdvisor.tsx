@@ -3,7 +3,7 @@ import { Briefcase, IndianRupee, Clock, Award, CheckCircle2, ArrowRight } from "
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
-import { BASE_URL } from "@/lib/constants";
+import { ADVISOR_PLAY_STORE_URL, BASE_URL } from "@/lib/constants";
 
 // Initialize EmailJS
 emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
@@ -194,6 +194,14 @@ export const BecomeAdvisor = () => {
                       </>
                     )}
                   </button>
+                  <a
+                    href={ADVISOR_PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-5 py-3.5 rounded-2xl border border-border font-medium hover:bg-secondary transition-smooth"
+                  >
+                    Or sign up via the app
+                  </a>
                 </div>
 
                 <p className="sm:col-span-2 text-xs text-muted-foreground">

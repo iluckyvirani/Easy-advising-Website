@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Video, Mic, Calendar, Users, Radio } from "lucide-react";
 import axios from "axios";
-import { BASE_URL } from "@/lib/constants";
+import { PLAY_STORE_URL, BASE_URL } from "@/lib/constants";
 
 interface LiveSession {
   id: number;
@@ -64,8 +64,11 @@ export const LiveSessions = () => {
                   </div>
                 ))
               : sessions.map((s, i) => (
-              <div
+              <a
                 key={i}
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative flex flex-col rounded-3xl overflow-hidden bg-card border border-border shadow-card transition-smooth w-[85%] shrink-0 snap-center"
               >
                 <div
@@ -104,7 +107,7 @@ export const LiveSessions = () => {
                     {s.live ? "Join Now" : "Reserve Seat"}
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -125,8 +128,11 @@ export const LiveSessions = () => {
                 </div>
               ))
             : sessions.map((s, i) => (
-            <div
+            <a
               key={i}
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative flex flex-col rounded-3xl overflow-hidden bg-card border border-border shadow-card hover:shadow-glow hover:-translate-y-1 transition-smooth"
             >
               <div
@@ -180,9 +186,13 @@ export const LiveSessions = () => {
                   {s.live ? "Join Now" : "Reserve Seat"}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
+
+        <p className="text-center text-sm text-muted-foreground mt-10">
+          Tapping any session opens it in the Easy Advising app — or redirects you to install it from the Play Store.
+        </p>
       </div>
     </section>
   );
