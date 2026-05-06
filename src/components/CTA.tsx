@@ -1,4 +1,4 @@
-import { PlayStoreButton, AppStoreButton } from "./PlayStoreButton";
+
 
 export const CTA = () => {
   return (
@@ -13,10 +13,6 @@ export const CTA = () => {
             <p className="mt-5 text-white/85 text-lg">
               Download Easy Advising on the Play Store or App Store and start your first session in under 60 seconds.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <PlayStoreButton variant="light" />
-              <AppStoreButton variant="light" />
-            </div>
           </div>
         </div>
       </div>

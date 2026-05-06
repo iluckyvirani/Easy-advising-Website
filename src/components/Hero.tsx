@@ -1,6 +1,4 @@
 import { Star, ShieldCheck } from "lucide-react";
-import { PlayStoreButton, AppStoreButton } from "./PlayStoreButton";
-import heroPhone from "@/assets/screen-experts.png";
 
 export const Hero = () => {
   return (
@@ -21,8 +19,6 @@ export const Hero = () => {
             Easy Advising is a platform where experts and creators host live webinars, run interactive sessions, and connect 1-on-1 with you.          </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <PlayStoreButton variant="light" />
-            <AppStoreButton variant="light" />
             <a href="#sessions" className="inline-flex items-center px-5 py-3 rounded-2xl border border-white/30 hover:bg-white/10 transition-smooth font-medium">
               Browse live sessions
             </a>
