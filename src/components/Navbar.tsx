@@ -55,7 +55,7 @@ export const Navbar = () => {
           <div className={cn("leading-tight transition-smooth", scrolled ? "text-foreground" : "text-white")}>
             <div className="font-extrabold text-lg tracking-tight">Easy Advising</div>
             <div className={cn("text-[10px] uppercase tracking-[0.18em] -mt-0.5", scrolled ? "text-muted-foreground" : "text-white/70")}>
-              Talk to experts
+              Connect With Creators & Experts
             </div>
           </div>
         </a>
