@@ -73,8 +73,15 @@ export const LiveSessions = () => {
               >
                 <div
                   className={`relative h-44 overflow-hidden ${!s.banner ? "bg-brand-gradient" : ""}`}
-                  style={s.banner ? { backgroundImage: `url(${s.banner})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
-                >
+ style={
+    s.banner
+      ? {
+          backgroundImage: `url("${encodeURI(s.banner)}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }
+      : undefined
+  }                >
                   {!s.banner && <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />}
                   <img src={s.avatar} alt={s.host} className="absolute bottom-4 left-5 h-20 w-20 rounded-full border-4 border-card object-cover" />
                   <div className="absolute top-4 left-4 flex items-center gap-2">
