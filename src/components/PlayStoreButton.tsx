@@ -2,15 +2,26 @@ import { PLAY_STORE_URL, APP_STORE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import playstoreIcon from "@/assets/playstore.png";
 import appStoreIcon from "@/assets/app-store.png";
+import { trackEvent } from "@/lib/metaPixel";
 
 export const PlayStoreButton = ({
   className,
   variant = "dark",
+  onClick,
 }: {
   className?: string;
   variant?: "dark" | "light";
+  onClick?: () => void;
 }) => {
   const isDark = variant === "dark";
+  const handlePlayStoreClick = () => {
+    trackEvent("Lead", {
+      button_name: "Join Now",
+      button_category: "Play Store Button",
+    });
+
+    onClick?.();
+  };
   return (
     <a
       href={PLAY_STORE_URL}
@@ -24,7 +35,8 @@ export const PlayStoreButton = ({
         className
       )}
       aria-label="Get it on Google Play"
-    >
+      onClick={handlePlayStoreClick}
+      >
       {/* Google Play icon */}
       <img src={playstoreIcon} alt="" className="h-7 w-7 object-contain" aria-hidden="true" />
       <div className="flex flex-col leading-tight text-left">

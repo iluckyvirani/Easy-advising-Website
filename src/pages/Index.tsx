@@ -9,8 +9,18 @@ import { BecomeAdvisor } from "@/components/BecomeAdvisor";
 import { CTA } from "@/components/CTA";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
+import { useEffect } from "react";
+import { trackEvent } from "@/lib/metaPixel";
 
 const Index = () => {
+  
+  useEffect(() => {
+    trackEvent("ViewContent", {
+      content_name: "Homepage",
+      content_category: "Page",
+    });
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />

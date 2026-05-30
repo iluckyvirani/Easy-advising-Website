@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.webp";
 import { PlayStoreButton } from "./PlayStoreButton";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/metaPixel";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -18,6 +19,14 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#home");
+
+  const handleClick = (href: string, label: string) => {
+    setActive(href);
+    trackEvent("Lead", {
+      button_name: label,
+      button_category: "Navbar Button",
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -76,6 +85,7 @@ export const Navbar = () => {
                       ? "text-muted-foreground hover:text-foreground"
                       : "text-white/80 hover:text-white"
                 )}
+                onClick={() => handleClick(l.href, l.label)}
               >
                 {l.label}
               </a>
@@ -119,7 +129,7 @@ export const Navbar = () => {
               </li>
             ))}
             <li className="pt-3 flex flex-wrap gap-3">
-              <PlayStoreButton />
+              <PlayStoreButton onClick={() => handleClick("#sessions", "Join Now")} />
             </li>
           </ul>
         </div>
