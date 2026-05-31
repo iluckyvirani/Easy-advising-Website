@@ -10,7 +10,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import RefundPolicy from "./pages/RefundPolicy.tsx";
 import LiveSessionDetail from "./pages/LiveSessionDetail.tsx";
 import PageTracker from "./components/PageTracker.tsx";
-import { ScrollToTop } from "./lib/utils.ts";
+import { ScrollToTop } from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
 
