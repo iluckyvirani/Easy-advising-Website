@@ -10,6 +10,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import RefundPolicy from "./pages/RefundPolicy.tsx";
 import LiveSessionDetail from "./pages/LiveSessionDetail.tsx";
 import PageTracker from "./components/PageTracker.tsx";
+import { ScrollToTop } from "./lib/utils.ts";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <PageTracker />
         <Routes>
           <Route path="/" element={<Index />} />
