@@ -16,12 +16,19 @@ export const PolicyLayout = ({ title, subtitle, updated, children }: PolicyLayou
     <div className="min-h-screen flex flex-col">
       <header className="border-b border-border bg-background/95 backdrop-blur sticky top-0 z-40">
         <div className="container flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2.5">
+          <Link
+            to="/"
+            data-track-name="Easy Advising Logo"
+            data-track-category="Policy Page"
+            className="flex items-center gap-2.5"
+          >
             <img src={logo} alt="Easy Advising" className="h-9 w-9 rounded-lg bg-white p-0.5" />
             <span className="font-extrabold text-lg">Easy Advising</span>
           </Link>
           <Link
             to="/"
+            data-track-name="Back to home"
+            data-track-category="Policy Page"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth"
           >
             <ArrowLeft className="h-4 w-4" /> Back to home

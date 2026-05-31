@@ -22,7 +22,12 @@ export const Hero = () => {
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <PlayStoreButton variant="light" />
-            <a href="#sessions" className="inline-flex items-center px-5 py-3 rounded-2xl border border-white/30 hover:bg-white/10 transition-smooth font-medium">
+            <a
+              href="#sessions"
+              data-track-name="Browse live sessions"
+              data-track-category="Hero"
+              className="inline-flex items-center px-5 py-3 rounded-2xl border border-white/30 hover:bg-white/10 transition-smooth font-medium"
+            >
               Browse live sessions
             </a>
           </div>

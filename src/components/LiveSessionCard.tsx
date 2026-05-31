@@ -89,6 +89,8 @@ export const LiveSessionCard = ({ session: s, className }: LiveSessionCardProps)
         <div className="flex flex-col gap-2  mt-4">
           <Link
             to={getSessionPath(s)}
+            data-track-name="View Details"
+            data-track-category="Live Sessions Card"
             className="inline-flex items-center justify-center w-full py-2.5 rounded-xl border border-border bg-background font-semibold text-sm hover:bg-secondary transition-smooth"
           >
             View Details
@@ -97,6 +99,8 @@ export const LiveSessionCard = ({ session: s, className }: LiveSessionCardProps)
             href={PLAY_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
+            data-track-name={s.live ? "Join Now" : "Reserve Seat"}
+            data-track-category="Live Sessions Card"
             className="inline-flex items-center justify-center w-full py-2.5 rounded-xl bg-brand-gradient text-white font-semibold text-sm hover:scale-[1.02] transition-smooth"
           >
             {s.live ? "Join Now" : "Reserve Seat"}

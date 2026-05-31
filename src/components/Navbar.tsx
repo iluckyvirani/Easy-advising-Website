@@ -3,7 +3,6 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.webp";
 import { PlayStoreButton } from "./PlayStoreButton";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/metaPixel";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -20,12 +19,9 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#home");
 
-  const handleClick = (href: string, label: string) => {
+  const handleNavClick = (href: string) => {
     setActive(href);
-    trackEvent("Lead", {
-      button_name: label,
-      button_category: "Navbar Button",
-    });
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -56,7 +52,13 @@ export const Navbar = () => {
       )}
     >
       <nav className="container flex items-center justify-between h-16 lg:h-20">
-        <a href="#home" className="flex items-center gap-2.5 group">
+        <a
+          href="#home"
+          data-track-name="Easy Advising Logo"
+          data-track-category="Navbar"
+          className="flex items-center gap-2.5 group"
+          onClick={() => handleNavClick("#home")}
+        >
           <div className="relative">
             <div className="absolute inset-0 bg-brand-gradient blur-md opacity-40 group-hover:opacity-70 transition-smooth rounded-full" />
             <img src={logo} alt="Easy Advising logo" className="relative h-10 w-10 rounded-lg bg-white p-0.5" />
@@ -77,6 +79,8 @@ export const Navbar = () => {
             <li key={l.href}>
               <a
                 href={l.href}
+                data-track-name={l.label}
+                data-track-category="Navbar"
                 className={cn(
                   "relative px-4 py-2 rounded-full text-sm font-medium transition-smooth",
                   active === l.href
@@ -85,7 +89,7 @@ export const Navbar = () => {
                       ? "text-muted-foreground hover:text-foreground"
                       : "text-white/80 hover:text-white"
                 )}
-                onClick={() => handleClick(l.href, l.label)}
+                onClick={() => handleNavClick(l.href)}
               >
                 {l.label}
               </a>
@@ -98,6 +102,9 @@ export const Navbar = () => {
         </div>
 
         <button
+          type="button"
+          data-track-name={open ? "Close Menu" : "Open Menu"}
+          data-track-category="Navbar"
           className={cn(
             "lg:hidden p-2 rounded-lg transition-smooth",
             scrolled ? "text-foreground hover:bg-secondary" : "text-white hover:bg-white/10"
@@ -116,7 +123,9 @@ export const Navbar = () => {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  data-track-name={l.label}
+                  data-track-category="Navbar"
+                  onClick={() => handleNavClick(l.href)}
                   className={cn(
                     "block py-3 px-4 rounded-xl font-medium transition-smooth",
                     active === l.href
@@ -129,7 +138,7 @@ export const Navbar = () => {
               </li>
             ))}
             <li className="pt-3 flex flex-wrap gap-3">
-              <PlayStoreButton onClick={() => handleClick("#sessions", "Join Now")} />
+              <PlayStoreButton className="!py-2 !px-4" />
             </li>
           </ul>
         </div>

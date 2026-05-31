@@ -175,6 +175,8 @@ export const BecomeAdvisor = () => {
                 <div className="sm:col-span-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-2">
                   <button
                     type="submit"
+                    data-track-name="Submit application"
+                    data-track-category="Become Advisor"
                     disabled={submitted || isLoading}
                     className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-gradient text-white font-semibold shadow-soft hover:shadow-glow hover:scale-[1.02] transition-smooth disabled:opacity-70"
                   >

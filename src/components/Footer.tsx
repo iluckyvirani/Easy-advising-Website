@@ -36,8 +36,10 @@ export const Footer = () => {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-track-name={`Social Link ${i + 1}`}
+                data-track-category="Footer"
                 className="h-9 w-9 rounded-full bg-background/10 hover:bg-brand-red flex items-center justify-center transition-smooth"
-                aria-label="Social"
+                aria-label="Social media"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -81,13 +83,23 @@ export const Footer = () => {
               {col.links.map((l) =>
                 l.href.startsWith("/#") || l.external ? (
                   <li key={l.label}>
-                    <a href={l.href} className="hover:text-background transition-smooth">
+                    <a
+                      href={l.href}
+                      data-track-name={l.label}
+                      data-track-category="Footer"
+                      className="hover:text-background transition-smooth"
+                    >
                       {l.label}
                     </a>
                   </li>
                 ) : (
                   <li key={l.label}>
-                    <Link to={l.href} className="hover:text-background transition-smooth">
+                    <Link
+                      to={l.href}
+                      data-track-name={l.label}
+                      data-track-category="Footer"
+                      className="hover:text-background transition-smooth"
+                    >
                       {l.label}
                     </Link>
                   </li>
@@ -100,7 +112,12 @@ export const Footer = () => {
 
       <div className="container mt-12 pt-6 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-background/60">
         <p>© {new Date().getFullYear()} Easy Advising. All rights reserved.</p>
-        <a href="mailto:contact@easyadvising.com" className="inline-flex items-center gap-2 hover:text-background transition-smooth">
+        <a
+          href="mailto:contact@easyadvising.com"
+          data-track-name="Contact Email"
+          data-track-category="Footer"
+          className="inline-flex items-center gap-2 hover:text-background transition-smooth"
+        >
           <Mail className="h-3.5 w-3.5" /> contact@easyadvising.com
         </a>
       </div>

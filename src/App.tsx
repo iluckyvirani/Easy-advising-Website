@@ -10,6 +10,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import RefundPolicy from "./pages/RefundPolicy.tsx";
 import LiveSessionDetail from "./pages/LiveSessionDetail.tsx";
 import PageTracker from "./components/PageTracker.tsx";
+import GlobalClickTracker from "./components/GlobalClickTracker.tsx";
 import { ScrollToTop } from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <PageTracker />
+        <GlobalClickTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/terms" element={<Terms />} />

@@ -33,22 +33,21 @@ function SessionCtaButton({
   live,
   href,
   className,
-  onClick,
 }: {
   live: boolean;
   href: string;
   className?: string;
-  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   const isAdvisorDeeplink = href.includes("/deeplink/advisor/");
 
   return (
     <a
       href={href}
+      data-track-name={live ? "Join Now" : "Reserve Seat"}
+      data-track-category="Live Session Details"
       {...(isAdvisorDeeplink
         ? {}
         : { target: "_blank", rel: "noopener noreferrer" })}
-      onClick={onClick}
       className={cn(
         "inline-flex items-center justify-center flex-1 min-w-0 px-6 py-3.5 rounded-xl bg-brand-gradient text-white font-semibold text-sm sm:text-base hover:scale-[1.02] active:scale-[0.98] transition-smooth shadow-soft",
         className
@@ -131,28 +130,25 @@ const LiveSessionDetail = () => {
       : getReserveSeatUrl(session, PLAY_STORE_URL)
     : PLAY_STORE_URL;
 
-  const handleCtaClick = () => {
-    if (!session) return;
-
-    trackEvent("Lead", {
-      session_name: session.title,
-      host: session.host,
-      ...(session.advisorId ? { advisor_id: session.advisorId } : {}),
-    });
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-secondary/30">
       <header className="border-b border-border bg-background/95 backdrop-blur sticky top-0 z-40">
         <div className="container flex items-center justify-between gap-3 h-14 sm:h-16 px-4 sm:px-6">
-          <Link to="/" className="flex items-center gap-2 min-w-0">
+          <Link
+            to="/"
+            data-track-name="Easy Advising Logo"
+            data-track-category="Live Session Details"
+            className="flex items-center gap-2 min-w-0"
+          >
             <img src={logo} alt="Easy Advising" className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg bg-white p-0.5 shrink-0" />
-            <span className="font-extrabold text-base sm:text-lg truncate hidden sm:inline">
+            <span className="font-extrabold text-base sm:text-lg truncate  sm:inline">
               Easy Advising
             </span>
           </Link>
           <Link
             to="/#sessions"
+            data-track-name="Back to sessions"
+            data-track-category="Live Session Details"
             className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth shrink-0"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -221,6 +217,8 @@ const LiveSessionDetail = () => {
                   </div>
                   <button
                     type="button"
+                    data-track-name="Share Session"
+                    data-track-category="Live Session Details"
                     onClick={handleShare}
                     className="inline-flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-background text-foreground hover:bg-secondary hover:text-brand-red transition-smooth"
                     aria-label="Share session"
@@ -292,11 +290,7 @@ const LiveSessionDetail = () => {
                       : "Limited seats available — reserve your spot in the app."}
                   </p>
                   <div className="flex gap-2 sm:gap-3">
-                    <SessionCtaButton
-                      live={session.live}
-                      href={ctaHref}
-                      onClick={handleCtaClick}
-                    />
+                    <SessionCtaButton live={session.live} href={ctaHref} />
                   </div>
                 </div>
               </div>
