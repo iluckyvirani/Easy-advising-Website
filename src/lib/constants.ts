@@ -1,4 +1,7 @@
 export const BASE_URL = "https://easy-backend-pi.vercel.app";
+
+/** Opens the Easy Advising app for a specific advisor (Reserve Seat on session details). */
+export const ADVISOR_DEEPLINK_BASE = "https://easyadvising.in/deeplink/advisor";
 // export const BASE_URL = "http://localhost:3000";
 
 export const PLAY_STORE_URL =

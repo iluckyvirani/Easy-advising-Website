@@ -18,7 +18,12 @@ import { fetchLiveSession } from "@/lib/liveSessionApi";
 import { PLAY_STORE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { LiveSession } from "@/types/liveSession";
-import { getSessionDescription, getSessionPath, getSessionShareUrl } from "@/types/liveSession";
+import {
+  getReserveSeatUrl,
+  getSessionDescription,
+  getSessionPath,
+  getSessionShareUrl,
+} from "@/types/liveSession";
 
 import { trackEvent } from "@/lib/metaPixel";
 
@@ -26,18 +31,23 @@ import { trackEvent } from "@/lib/metaPixel";
 
 function SessionCtaButton({
   live,
+  href,
   className,
   onClick,
 }: {
   live: boolean;
+  href: string;
   className?: string;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
+  const isAdvisorDeeplink = href.includes("/deeplink/advisor/");
+
   return (
     <a
-      href={PLAY_STORE_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={href}
+      {...(isAdvisorDeeplink
+        ? {}
+        : { target: "_blank", rel: "noopener noreferrer" })}
       onClick={onClick}
       className={cn(
         "inline-flex items-center justify-center flex-1 min-w-0 px-6 py-3.5 rounded-xl bg-brand-gradient text-white font-semibold text-sm sm:text-base hover:scale-[1.02] active:scale-[0.98] transition-smooth shadow-soft",
@@ -115,13 +125,20 @@ const LiveSessionDetail = () => {
     }
   }, [session]);
 
-  const handleJoinNow = () => {
-    trackEvent("Lead", {
-      session_name: session?.title,
-      host: session?.host,
-    });
+  const ctaHref = session
+    ? session.live
+      ? PLAY_STORE_URL
+      : getReserveSeatUrl(session, PLAY_STORE_URL)
+    : PLAY_STORE_URL;
 
-    window.open(PLAY_STORE_URL, "_blank");
+  const handleCtaClick = () => {
+    if (!session) return;
+
+    trackEvent("Lead", {
+      session_name: session.title,
+      host: session.host,
+      ...(session.advisorId ? { advisor_id: session.advisorId } : {}),
+    });
   };
 
   return (
@@ -275,7 +292,10 @@ const LiveSessionDetail = () => {
                       : "Limited seats available — reserve your spot in the app."}
                   </p>
                   <div className="flex gap-2 sm:gap-3">
-                    <SessionCtaButton live={session.live} onClick={handleJoinNow}
+                    <SessionCtaButton
+                      live={session.live}
+                      href={ctaHref}
+                      onClick={handleCtaClick}
                     />
                   </div>
                 </div>

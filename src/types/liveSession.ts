@@ -13,7 +13,25 @@ export interface LiveSession {
   perQ: string;
   description?: string | null;
   slug?: string | null;
+  advisorId?: number | null;
   isActive: boolean;
+}
+
+/** Reserve Seat deeplink — only used on the session details page when advisorId is set. */
+export function getAdvisorDeeplinkUrl(advisorId: number | string): string {
+  const id = String(advisorId).trim();
+  return `https://easyadvising.in/deeplink/advisor/${id}`;
+}
+
+/** Play Store fallback, or advisor deeplink for Reserve Seat when advisorId exists. */
+export function getReserveSeatUrl(
+  session: Pick<LiveSession, "advisorId">,
+  playStoreUrl: string
+): string {
+  if (session.advisorId != null && Number(session.advisorId) > 0) {
+    return getAdvisorDeeplinkUrl(session.advisorId);
+  }
+  return playStoreUrl;
 }
 
 export function getSessionPath(session: Pick<LiveSession, "id" | "slug">): string {
